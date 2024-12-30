@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenway Technical College</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            color: black;
+            padding: 40px 0;
+            position: relative;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .card {
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img-top {
+        transform: scale(1.1);
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .course-details {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .card-overlay {
+        transition: opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .card:hover .card-overlay {
+        opacity: 0.7;
+    }
+
+    .stretched-link {
+        text-decoration: none;
+    }
+        .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;  /* Ensures equal spacing between the cards */
+        }
+
+        .col-md-4 {
+        display: flex;
+        justify-content: center;  /* Centers the cards horizontally */
+        margin-bottom: 30px;
+        }
+
+        #Contactimage {
+            width: 500px;
+            height: 100px;
+            
+            margin: -80px auto;
+        }
+
+        footer {
+            background: white;
+            color: black;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 2px solid #ccc;
+        }
+
+        .btn-register {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff6b6b, #ffcc00, #4caf50, #2196f3, #9c27b0);
+            background-size: 300% 300%;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            animation: gradient-animation 3s ease infinite, vibrate 0.5s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-register:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes vibrate {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-2px);
+            }
+            50% {
+                transform: translateX(2px);
+            }
+            75% {
+                transform: translateX(-1px);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            #contact .contact-info {
+                text-align: center;
+            }
+            #contact .img-fluid {
+                margin-top: 20px;
+            }
+
+            .col-md-4 {
+                margin-bottom: 30px;
+            }
+        }
+
+
+        .language-btn {
+        position: fixed; /* Fix the position to the viewport */
+        top: 10px; /* Distance from the top */
+        right: 10px; /* Distance from the right */
+        color: white;
+        background: linear-gradient(45deg,  #4caf50, #9c27b0);
+        background-size: 300% 300%;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        animation: gradient-animation 3s ease infinite, vibrate 0.5s ease-in-out infinite;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        padding: 10px 20px; /* Balanced padding for a button */
+        z-index: 1000; /* Ensure it's above other elements */
+        cursor: pointer;
+        }
+
+        footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(90deg, #4caf50, #9c27b0); /* Gradient background */
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 1rem;
+        font-weight: bold;
+        z-index: 1000; /* Ensures it's above other elements */
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for a floating effect */
+        }
+
+        .contact-link {
+            color: #fff; /* Keep the link white for contrast */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 15px;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-link:hover {
+            background: white;
+            color: #4caf50;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+        #contact {
+        background-color: #f8f9fa; /* Light background */
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        #contact h5 {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            color: #333;
+            margin: 0 0 10px;
+        }
+
+        .contact-info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        #Contactimage {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="text-center">
+        <img src="./images/GTC.png" alt="Technical College Logo" class="logo">
+        <div class="container">
+            <button class="language-btn" onclick="toggleLanguage()">Switch to English</button>
+            <h1 class="display-4 fade-in">Greenway Technical College</h1>
+            <p class="lead fade-in">For Foreign Employment</p>
+            <p class="lead fade-in">Powered By Greenway Agencies</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeboETlLLLjQOZmBSjSNS4WMrO21YAUwwP7e6w8UJAaCv5cCA/viewform?usp=dialog" class="btn btn-register">Register Now</a>
+            
+        </div>      
+    </header>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fade-in">Available Courses</h2>
+            <div class="row">
+                <div class="row text-center mb-3">
+                    <div class="col-sm-6 col-md-4">
+                        <h4>NVQ 3 Courses</h4>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <h4>NVQ 4 Courses</h4>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <h4>Short Course</h4>
+                    </div>
+                </div>
+                
+                <!-- NVQ Level 3 (Electrician) -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/Electrician.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 3 (විදුලි කාර්මිකයා)" 
+                                data-english="NVQ Level 3 (Electrician)">
+                                NVQ Level 3 (විදුලි කාර්මිකයා)
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_3_electrician.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- NVQ Level 4 (Electrician) -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/Electrician2.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 4 (විදුලි කාර්මිකයා)" 
+                                data-english="NVQ Level 4 (Electrician)">
+                                NVQ Level 4 (විදුලි කාර්මිකයා)
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_4_electrician.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/Electrician3.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="විදුලි ස්ථාපන කෙටි පාඨමාලාව" 
+                                data-english="Electrical Installation Short Course">
+                                විදුලි ස්ථාපන කෙටි පාඨමාලාව
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_short_ElectricalInstallationShortCourse.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+               <!-- End of 1st Row -->
+
+                <!-- 2nd Row -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/Plasterer1.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 3 ප්ලාස්ටර්" 
+                                data-english=" NVQ Level 3 (Plasterer)">
+                                NVQ Level 3 ප්ලාස්ටර්
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_3_plasterer.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/Barbending1.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 4 කම්බි නැවීම්" 
+                                data-english="NVQ Level 4 (Barbending)">
+                                NVQ Level 4 කම්බි නැවීමේ ශිල්පය 
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_4_Barbending.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/Masonry1.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="පෙදරේරු(මේසන්) කෙටි පාඨමාලාව" 
+                                data-english="Masonry Short Course">
+                                පෙදරේරු(මේසන්) කෙටි පාඨමාලාව
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_short_MasonryShortCourse.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of 2nd Row -->
+
+                <!-- 3rd Row -->               
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/Construction1.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 3 (ඉදිකිරීම් ශිල්පීන්)" 
+                                data-english="NVQ Level 3 (Construction Craftsman)">
+                                NVQ Level 3 (ඉදිකිරීම් ශිල්පීන්)
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_3_craftsman.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+                            
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/Welding1.png" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 3 වෙල්ඩින් ශිල්පී" 
+                                data-english="NVQ Level 3 (Welding)">
+                                NVQ Level 3 වෙල්ඩින් ශිල්පී
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_3_welding.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+                                
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/welding2.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="වෙල්ඩින් ශිල්පී කෙටි පාඨමාලාව" 
+                                data-english="Welder Short Course">
+                                වෙල්ඩින් ශිල්පී කෙටි පාඨමාලාව
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_short_WelderShortCourse.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End of the 3rd Row -->
+               
+                <!-- 4th Row  -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/plumbing1.jpeg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 3 (ජලනල කාර්මික ශිල්පී)" 
+                                data-english="NVQ Level 3 (Plumbing)">
+                                NVQ Level 3 (ජලනල කාර්මික ශිල්පී)
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_3_plumbing.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/plumber2.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 4 (ජලනල කාර්මික ශිල්පී)" 
+                                data-english="NVQ Level 4 (Plumbing)">
+                                NVQ Level 4 (ජලනල කාර්මික ශිල්පී)
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_4_plumbing.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/plumber3.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="ජලනල කාර්මික කෙටි පාඨමාලාව" 
+                                data-english="Plumbing Short Course">
+                                ජලනල කාර්මික කෙටි පාඨමාලාව
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_short_PlumbingShortCourse.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of the 4th Row -->
+
+                <!-- 5th Row -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/tile.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 3 ටයිල් ශිල්පය" 
+                                data-english="NVQ Level 3 (Tiler)">
+                                NVQ Level 3 ටයිල් ශිල්පය
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_3_tiler.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/tile2.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="NVQ Level 4 ටයිල් ශිල්පය" 
+                                data-english="NVQ Level 4 (Tiler)">
+                                NVQ Level 4 ටයිල් ශිල්පය
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_nvq_4_tiler.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-lg rounded overflow-hidden position-relative">
+                        <!-- Course Image -->
+                        <img src="./images/course/tile3.jpg" class="card-img-top" alt="Course Image">
+                
+                        <!-- Course Content -->
+                        <div class="card-body">
+                            <!-- Course Title -->
+                            <h5 class="card-title" 
+                                data-sinhala="ටයිල් ශිල්පය කෙටි පාඨමාලාව" 
+                                data-english="Tiler Short Course">
+                                ටයිල් ශිල්පය කෙටි පාඨමාලාව
+                            </h5>
+                
+                            <!-- Course Description (optional) -->
+                            <p class="card-text course-details" 
+                               data-sinhala="This course covers skills in first aid, fire safety, domestic wiring, and more..." 
+                               data-english="This course covers skills in first aid, fire safety, domestic wiring, and more...">
+                               This course covers skills in first aid, fire safety, domestic wiring, and more...
+                            </p>
+                
+                            <!-- View Details Button -->
+                            <a href="./course/cou_short_TilerShortCourse.html" class="btn btn-primary stretched-link">View Details</a>
+                        </div>
+                
+                        <!-- Overlay for interaction effect -->
+                        <div class="card-overlay position-absolute top-0 left-0 w-100 h-100 bg-dark opacity-0 d-flex justify-content-center align-items-center">
+                            <span class="text-white h4">Click to Explore</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of the 5th Row -->
+
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container fade-in">
+            <h2 class="text-left mb-4">Contact Us</h2>
+            <h5 class="mb-4">
+                අධයාපන සහ  අනෙකුත් සුදුකම් ලබා ගන්න අපගේ <br> ග්‍රීන්වේ තාක්ෂණික විද්‍යාලයට දැන්ම එකතුවන්න
+            </h5>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="contact-info mb-4">
+                        <p><strong>Phone:</strong> +94 74 123 4567</p>
+                        <p><strong>Email:</strong> info@greenwaytechnicalcollege.lk</p>
+                        <p><strong>Location:</strong> 45 Kandy Road Millawa, Mallawapitiya</p>
+                        <p><strong>Website:</strong> <a href="http://www.greenwaytech.lk" target="_blank">www.greenwaytech.lk</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="./images/Screenshot 2024-12-20 103336.png" id="Contactimage" alt="Contact Us" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <center><p>&copy; 2024 Greenway Technical College. All rights reserved.</p></center>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container d-flex justify-content-between align-items-center">
+            <span>දැන්ම කතා කරන්න ග්‍රීන්වේ තාක්ෂණික විද්‍යාලය</span>
+            <a href="tel:+94741234567" class="contact-link">0741234567</a>
+        </div>
+    </footer>
+    
+
+
+   
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- Language Toggle Script -->
+     <script>
+        let isEnglish = false; // To track the current language state
+    
+        function toggleLanguage() {
+            const courseDetails = document.querySelectorAll('.course-details, .card-title'); // Select all course details
+            courseDetails.forEach(course => {
+                if (isEnglish) {
+                    // Change to Sinhala
+                    course.innerHTML = course.getAttribute('data-sinhala');
+                } else {
+                    // Change to English
+                    course.innerHTML = course.getAttribute('data-english');
+                }
+            });
+    
+            // Toggle the language state
+            isEnglish = !isEnglish;
+            
+            // Change button text accordingly
+            const button = document.querySelector('.language-btn');
+            button.textContent = isEnglish ? 'Switch to Sinhala' : 'Switch to English';
+        }
+    </script>
+    
+</body>
+</html>
